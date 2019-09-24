@@ -8,7 +8,10 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 
+import static android.view.Gravity.CENTER;
+
 public class MyButton extends AppCompatButton {
+
     private Drawable enabledBackground, disableBackground;
     private int textColor;
 
@@ -30,6 +33,11 @@ public class MyButton extends AppCompatButton {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        setBackground(isEnabled() ? enabledBackground : disableBackground);
+        setTextColor(textColor);
+        setTextSize(12.f);
+        setGravity(CENTER);
+        setText(isEnabled() ? "Submit" : "Isi Dulu");
     }
 
     private void init() {
